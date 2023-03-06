@@ -1,16 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:gtnh_assistant/widgets/base_status_section/base_status_section.dart';
+import 'package:gtnh_assistant/widgets/crafting_report_section/crafting_report_section.dart';
 
 import '../utils/constants.dart';
 import 'custom_app_bar/custom_app_bar.dart';
-import 'export_section/export_section.dart';
-import 'planning_section/planning_section.dart';
-import 'project_elements_section/project_elements_section.dart';
-import 'project_settings_section/project_settings_section.dart';
 
 /// This is the primary page for the app.
-class BuildPage extends StatelessWidget {
+class MainPage extends StatelessWidget {
   /// Creates the primary functional page.
-  const BuildPage({Key? key}) : super(key: key);
+  const MainPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -36,10 +34,8 @@ class BuildPage extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: const <Widget>[
               CustomAppBar(),
-              ProjectSettingsSection(),
-              ProjectElementsSection(),
-              PlanningSection(),
-              ExportSection(),
+              BaseStatusSection(),
+              CraftingReportSection(),
             ],
           ),
         ),

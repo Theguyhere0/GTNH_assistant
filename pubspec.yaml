@@ -1,14 +1,14 @@
-name: planner_assistant
-description: A web app for creating and optimizing plans for projects
+name: gtnh_assistant
+description: A tool to help with crafting and automation in GTNH
 
 # The following line prevents the package from being accidentally published to
-# pub.dev using `pub publish`. This is preferred for private packages.
+# pub.dev using `flutter pub publish`. This is preferred for private packages.
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 
 version: 0.1.0
 
 environment:
-  sdk: "^2.17.0"
+  sdk: '>=2.18.5 <3.0.0'
 
 dependencies:
   flutter:
@@ -36,7 +36,7 @@ dev_dependencies:
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 
-# The following section is specific to Flutter.
+# The following section is specific to Flutter packages.
 flutter:
 
   # The following line ensures that the Material Icons font is
@@ -50,7 +50,7 @@ flutter:
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
-  # https://flutter.dev/assets-and-images/#resolution-aware.
+  # https://flutter.dev/assets-and-images/#resolution-aware
 
   # For details regarding adding assets from package dependencies, see
   # https://flutter.dev/assets-and-images/#from-packages
@@ -81,5 +81,3 @@ flutter:
         - asset: fonts/Roboto-BoldItalic.ttf
           weight: 700
           style: italic
-
-
