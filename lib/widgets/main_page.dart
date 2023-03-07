@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:gtnh_assistant/widgets/base_status_section/base_status_section.dart';
-import 'package:gtnh_assistant/widgets/crafting_report_section/crafting_report_section.dart';
 
 import '../utils/constants.dart';
+import 'base_status_section/base_status_section.dart';
+import 'crafting_report_section/crafting_report_section.dart';
 import 'custom_app_bar/custom_app_bar.dart';
+import 'export_section/export_section.dart';
+import 'settings_section/settings_section.dart';
 
 /// This is the primary page for the app.
 class MainPage extends StatelessWidget {
@@ -34,8 +36,10 @@ class MainPage extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: const <Widget>[
               CustomAppBar(),
+              SettingsSection(),
               BaseStatusSection(),
               CraftingReportSection(),
+              ExportSection(),
             ],
           ),
         ),

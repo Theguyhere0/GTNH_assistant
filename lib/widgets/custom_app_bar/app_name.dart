@@ -17,14 +17,14 @@ class AppName extends StatelessWidget {
       child: Align(
         alignment: Alignment.bottomCenter,
         child: Hypertext(
-          hypertext: 'Planner Assistant',
+          hypertext: 'GTNH Assistant',
           normalStyle: Theme.of(context).textTheme.displayLarge!,
           onTap: () {
             launchUrl(
               Uri(
                 scheme: 'https',
                 host: 'github.com',
-                path: 'Theguyhere0/planner_assistant',
+                path: 'Theguyhere0/GTNH_assistant',
               ),
             );
           },

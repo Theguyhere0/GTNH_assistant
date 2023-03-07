@@ -2,15 +2,15 @@ import 'package:flutter/material.dart';
 
 import '../common/page_section.dart';
 
-/// The section for generating a report of crafting recipes and materials.
-class CraftingReportSection extends StatelessWidget {
-  const CraftingReportSection({Key? key}) : super(key: key);
+/// The section for customizing certain behaviors of the assistant.
+class SettingsSection extends StatelessWidget {
+  const SettingsSection({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return PageSection(
-      'Crafting Report',
-      icon: Icons.description_rounded,
+      'Settings',
+      icon: Icons.settings_rounded,
       content: <Widget>[
         Row(
           crossAxisAlignment: CrossAxisAlignment.start,

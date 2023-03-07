@@ -9,8 +9,8 @@ class BaseStatusSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return PageSection(
-      'Export',
-      icon: Icons.upload_rounded,
+      'Base Status',
+      icon: Icons.home_rounded,
       content: <Widget>[
         Row(
           crossAxisAlignment: CrossAxisAlignment.start,
