@@ -5,15 +5,15 @@ import 'cards/display_final_resources_card.dart';
 import 'cards/select_final_fluids_card.dart';
 import 'cards/select_final_items_card.dart';
 
-/// The section for customizing certain behaviors of the assistant.
-class SettingsSection extends StatelessWidget {
-  const SettingsSection({Key? key}) : super(key: key);
+/// The section for customizing resource related options.
+class ResourcesSection extends StatelessWidget {
+  const ResourcesSection({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return PageSection(
-      'Settings',
-      icon: Icons.settings_rounded,
+      'Resources',
+      icon: Icons.water_drop_rounded,
       content: <Widget>[
         Column(
           children: <Widget>[

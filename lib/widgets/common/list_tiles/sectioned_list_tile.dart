@@ -73,10 +73,8 @@ class _SectionedListTile extends State<SectionedListTile> {
       onExpansionChanged: (bool expanded) {
         setState(() => _sectionExpanded = expanded);
       },
-      childrenPadding: const EdgeInsets.only(
-        left: defaultPadding * 2,
-        right: defaultPadding * 3,
-      ),
+      childrenPadding:
+          const EdgeInsets.symmetric(horizontal: defaultPadding * 3),
       children: widget.values
           .map((e) => InstanceListTile(
                 e,

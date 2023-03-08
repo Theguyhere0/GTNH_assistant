@@ -4,13 +4,16 @@ import 'assistant_state.dart';
 import 'fluid.dart';
 import 'item.dart';
 import 'item_type.dart';
+import 'machine.dart';
 import 'resource.dart';
+import 'tool.dart';
 
 /// The state provider for this assistant.
 final assistantControllerProvider =
     StateNotifierProvider<AssistantController, AssistantState>((ref) {
   return AssistantController(
-    const AssistantState(finalResources: []),
+    const AssistantState(
+        finalResources: [], availableTools: [], availableMachines: []),
   );
 });
 
@@ -49,5 +52,53 @@ class AssistantController extends StateNotifier<AssistantState> {
           ..remove(state.finalResources.firstWhere(
               (resource) => resource.name == resourceName,
               orElse: () => Fluid(name: ''))));
+  }
+
+  /// Attempt to add a new [Tool] to the available tools list by name.
+  void addAvailableToolByName(String toolName) {
+    try {
+      state = state.copyWith(availableTools: [
+        ...state.availableTools,
+        Tool.values.firstWhere((tool) => tool.value == toolName)
+      ]);
+    } on StateError {
+      return;
+    }
+  }
+
+  /// Attempt to remove a [Tool] from the available tools list by name.
+  void removeAvailableToolByName(String toolName) {
+    try {
+      state = state.copyWith(
+          availableTools: state.availableTools
+            ..remove(state.availableTools
+                .firstWhere((tool) => tool.name == toolName)));
+    } on StateError {
+      return;
+    }
+  }
+
+  /// Attempt to add a new [Machine] to the available machines list by name.
+  void addAvailableMachineByName(String machineName) {
+    try {
+      state = state.copyWith(availableMachines: [
+        ...state.availableMachines,
+        machines.firstWhere((machine) => machine.name == machineName)
+      ]);
+    } on StateError {
+      return;
+    }
+  }
+
+  /// Attempt to remove a [Machine] from the available machines list by name.
+  void removeAvailableMachineByName(String machineName) {
+    try {
+      state = state.copyWith(
+          availableMachines: state.availableMachines
+            ..remove(state.availableMachines
+                .firstWhere((machine) => machine.name == machineName)));
+    } on StateError {
+      return;
+    }
   }
 }
