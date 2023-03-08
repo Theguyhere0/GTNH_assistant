@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../theme/palette.dart';
+import '../buttons/add_button.dart';
 import '../buttons/delete_button.dart';
 
 /// A tile for custom lists for editing an element.
@@ -9,37 +10,38 @@ class InstanceListTile extends StatelessWidget {
   const InstanceListTile(
     this.name, {
     Key? key,
-    required this.type,
-    required this.dialog,
-    required this.delete,
+    this.delete,
+    this.add,
   }) : super(key: key);
 
   /// The name of the element.
   final String name;
 
-  /// The type of element being displayed.
-  final String type;
-
-  /// A callback for the dialog to display when clicked.
-  final void Function(String) dialog;
-
   /// The function to call to delete this instance.
-  final void Function(String) delete;
+  final void Function(String)? delete;
+
+  /// The function to call to add this instance.
+  final void Function(String)? add;
 
   @override
   Widget build(BuildContext context) {
-    return ListTile(
-      title: Container(
-        alignment: Alignment.topLeft,
-        child: Text(name),
-      ),
-      trailing: DeleteButton(
-        title: 'Delete $type: $name?',
-        delete: () => delete(name),
-      ),
-      tileColor: Palette.card,
-      hoverColor: Palette.focus,
-      onTap: () => dialog(name),
+    List<Widget> children = [
+      Text(
+        name,
+        style: Theme.of(context).textTheme.titleMedium,
+      )
+    ];
+    if (delete != null) {
+      children.add(const Spacer());
+      children.add(DeleteButton(() => delete!(name)));
+    } else if (add != null) {
+      children.add(const Spacer());
+      children.add(AddButton(() => add!(name)));
+    }
+
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: children,
     );
   }
 }

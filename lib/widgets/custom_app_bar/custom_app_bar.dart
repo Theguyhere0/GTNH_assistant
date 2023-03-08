@@ -4,6 +4,7 @@ import '../../utils/constants.dart';
 import 'app_name.dart';
 import 'bug_report_button.dart';
 import 'donation_button.dart';
+import 'gtnh_version.dart';
 import 'version_and_credits.dart';
 import 'help_button.dart';
 
@@ -23,7 +24,7 @@ class CustomAppBar extends StatelessWidget {
         children: const <Widget>[
           AppName(),
           VersionAndCredits(),
-          Spacer(),
+          GTNHVersion(),
           HelpButton(),
           BugReportButton(),
           DonationButton(),

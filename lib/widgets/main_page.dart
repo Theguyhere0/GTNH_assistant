@@ -39,7 +39,7 @@ class MainPage extends StatelessWidget {
               SettingsSection(),
               BaseStatusSection(),
               CraftingReportSection(),
-              ExportSection(),
+              // ExportSection(),
             ],
           ),
         ),
