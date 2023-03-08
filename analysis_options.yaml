@@ -2,3 +2,7 @@ include: package:flutter_lints/flutter.yaml
 
 analyzer:
   exclude: [lib/models/*g.dart]
+
+linter:
+  rules:
+    - prefer_relative_imports

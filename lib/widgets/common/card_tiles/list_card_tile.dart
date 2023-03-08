@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../../../models/database.dart';
 import '../../../utils/constants.dart';
 import '../list_tiles/creation_list_tile.dart';
 import '../list_tiles/instance_list_tile.dart';
@@ -11,72 +10,98 @@ class ListCardTile extends StatelessWidget {
   const ListCardTile({
     Key? key,
     this.title,
-    required this.type,
-    required this.dialog,
-    required this.instances,
-    required this.createNew,
-    required this.delete,
+    required this.values,
+    this.createNew,
+    this.delete,
+    this.add,
   }) : super(key: key);
 
   /// A possible descriptor for the list.
   ///
-  /// A null title will result in an expanded variant that is meant to take up an entire [SmallCard].
+  /// A null title will result in an expanded variant that is meant to take up an entire card.
   final String? title;
 
-  /// The type of data that is being listed.
-  final String type;
-
-  /// A callback for the dialog to display when an instance tile is clicked.
-  final void Function(String) dialog;
-
-  /// All the instances that need to be displayed by this list card tile.
-  final List<Data> instances;
+  /// All the values that need to be displayed by this list card tile.
+  final List<String> values;
 
   /// The function to call when creating a new instance.
-  final void Function() createNew;
+  final void Function()? createNew;
 
   /// The function to call to delete an instance.
-  final void Function(String) delete;
+  final void Function(String)? delete;
+
+  /// The function to call to add an instance.
+  final void Function(String)? add;
 
   @override
   Widget build(BuildContext context) {
     final scrollController = ScrollController();
+    List<Widget> columnChildren = [];
+
+    if (title == null) {
+      columnChildren.add(LimitedBox(
+        maxHeight: 450,
+        child: Card(
+          elevation: 0,
+          margin: const EdgeInsets.only(top: 3),
+          child: Scrollbar(
+            thumbVisibility: true,
+            controller: scrollController,
+            child: ListView.builder(
+              itemExtent: 35,
+              itemCount: values.length,
+              shrinkWrap: true,
+              controller: scrollController,
+              itemBuilder: (context, index) {
+                return InstanceListTile(
+                  values[index],
+                  delete: delete,
+                  add: add,
+                );
+              },
+            ),
+          ),
+        ),
+      ));
+    } else {
+      columnChildren.add(LimitedBox(
+        maxHeight: 150,
+        child: Card(
+          elevation: 0,
+          margin: const EdgeInsets.only(top: 3),
+          child: Scrollbar(
+            thumbVisibility: true,
+            controller: scrollController,
+            child: ListView.builder(
+              itemExtent: 35,
+              itemCount: values.length,
+              shrinkWrap: true,
+              controller: scrollController,
+              itemBuilder: (context, index) {
+                return InstanceListTile(
+                  values[index],
+                  delete: delete,
+                  add: add,
+                );
+              },
+            ),
+          ),
+        ),
+      ));
+    }
+
+    if (createNew != null) {
+      columnChildren.add(CreationListTile(
+        onClick: createNew,
+      ));
+    }
 
     return title == null
         // Expanded variant
         ? Padding(
             padding: const EdgeInsets.symmetric(horizontal: defaultPadding),
             child: Column(
-              children: [
-                LimitedBox(
-                  maxHeight: 250,
-                  child: Card(
-                    elevation: 0,
-                    margin: const EdgeInsets.only(top: 3),
-                    child: Scrollbar(
-                      thumbVisibility: true,
-                      controller: scrollController,
-                      child: ListView.builder(
-                        itemExtent: 35,
-                        itemCount: instances.length,
-                        shrinkWrap: true,
-                        controller: scrollController,
-                        itemBuilder: (context, index) {
-                          return InstanceListTile(
-                            instances[index].dataName,
-                            type: type,
-                            dialog: dialog,
-                            delete: delete,
-                          );
-                        },
-                      ),
-                    ),
-                  ),
-                ),
-                CreationListTile(
-                  onClick: createNew,
-                ),
-              ],
+              children: columnChildren,
             ),
           )
         // Embedded variant
@@ -84,10 +109,9 @@ class ListCardTile extends StatelessWidget {
             horizontalTitleGap: titleGap,
             leading: Container(
               width: cardTileTitleWidth,
-              alignment: instances.isEmpty
-                  ? Alignment.centerRight
-                  : Alignment.topRight,
-              padding: instances.isEmpty
+              alignment:
+                  values.isEmpty ? Alignment.centerRight : Alignment.topRight,
+              padding: values.isEmpty
                   ? const EdgeInsets.only(top: 2)
                   : const EdgeInsets.all(0),
               child: Text(
@@ -99,36 +123,7 @@ class ListCardTile extends StatelessWidget {
             title: Padding(
               padding: const EdgeInsets.only(top: 2),
               child: Column(
-                children: [
-                  LimitedBox(
-                    maxHeight: 150,
-                    child: Card(
-                      elevation: 0,
-                      margin: const EdgeInsets.only(top: 3),
-                      child: Scrollbar(
-                        thumbVisibility: true,
-                        controller: scrollController,
-                        child: ListView.builder(
-                          itemExtent: 35,
-                          itemCount: instances.length,
-                          shrinkWrap: true,
-                          controller: scrollController,
-                          itemBuilder: (context, index) {
-                            return InstanceListTile(
-                              instances[index].dataName,
-                              type: type,
-                              dialog: dialog,
-                              delete: delete,
-                            );
-                          },
-                        ),
-                      ),
-                    ),
-                  ),
-                  CreationListTile(
-                    onClick: createNew,
-                  ),
-                ],
+                children: columnChildren,
               ),
             ),
           );

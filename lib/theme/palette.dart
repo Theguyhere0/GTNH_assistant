@@ -9,4 +9,5 @@ class Palette {
   static const standard = Color(0xffa3b1fc);
   static const highlight = Color(0xffeceef9);
   static const failure = Color(0xffff6c7e);
+  static const success = Color(0xff7fff7f);
 }

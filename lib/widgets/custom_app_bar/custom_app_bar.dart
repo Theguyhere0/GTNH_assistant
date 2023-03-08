@@ -4,8 +4,9 @@ import '../../utils/constants.dart';
 import 'app_name.dart';
 import 'bug_report_button.dart';
 import 'donation_button.dart';
+import 'gtnh_version.dart';
 import 'version_and_credits.dart';
-import 'video_button.dart';
+import 'help_button.dart';
 
 /// The the top bar of the app with all the necessary header information.
 class CustomAppBar extends StatelessWidget {
@@ -23,8 +24,8 @@ class CustomAppBar extends StatelessWidget {
         children: const <Widget>[
           AppName(),
           VersionAndCredits(),
-          Spacer(),
-          VideoButton(),
+          GTNHVersion(),
+          HelpButton(),
           BugReportButton(),
           DonationButton(),
         ],

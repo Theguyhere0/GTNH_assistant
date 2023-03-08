@@ -7,10 +7,10 @@ import 'widgets/main_page.dart';
 import 'widgets/unsupported_page.dart';
 
 void main(List<String> args) =>
-    runApp(const ProviderScope(child: PlannerAssistantApp()));
+    runApp(const ProviderScope(child: GTNHAssistantApp()));
 
-class PlannerAssistantApp extends StatelessWidget {
-  const PlannerAssistantApp({Key? key}) : super(key: key);
+class GTNHAssistantApp extends StatelessWidget {
+  const GTNHAssistantApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
