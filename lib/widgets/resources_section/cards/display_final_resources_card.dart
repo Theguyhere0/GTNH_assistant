@@ -54,7 +54,7 @@ class DisplayFinalResourcesCard extends ConsumerWidget {
     return SmallCard(
       'Current Final Resources',
       infoContent:
-          'A list of all the resources that the Crafting Report will treat as final and will not try to find the recipes for to create the crafting tree.',
+          'A list of all the resources that the Crafting Report will treat as final and will not try to find the recipes for to create the report.',
       content: Padding(
         padding: const EdgeInsets.symmetric(horizontal: defaultPadding),
         child: SectionedListCardTile(

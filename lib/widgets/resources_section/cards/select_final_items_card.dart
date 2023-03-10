@@ -40,7 +40,7 @@ class SelectFinalItemsCard extends ConsumerWidget {
     return SmallCard(
       'Select Final Items',
       infoContent:
-          'Select the items that the Crafting Report will treat as final and will not try to find the recipes for to create the crafting tree.',
+          'Select the items that the Crafting Report will treat as final and will not try to find the recipes for to create the report.',
       content: Padding(
         padding: const EdgeInsets.symmetric(horizontal: defaultPadding),
         child: SectionedListCardTile(

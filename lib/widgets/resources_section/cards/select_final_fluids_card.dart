@@ -21,7 +21,7 @@ class SelectFinalFluidsCard extends ConsumerWidget {
     return SmallCard(
       'Select Final Fluids',
       infoContent:
-          'Select the fluids that the Crafting Report will treat as final and will not try to find the recipes for to create the crafting tree.',
+          'Select the fluids that the Crafting Report will treat as final and will not try to find the recipes for to create the report.',
       content: Padding(
         padding: const EdgeInsets.symmetric(horizontal: defaultPadding),
         child: ListCardTile(

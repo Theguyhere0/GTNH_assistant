@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../models/fluid.dart';
 import '../../../models/recipe.dart';
 import '../../../theme/palette.dart';
 import '../../../utils/constants.dart';
@@ -27,10 +28,19 @@ class RecipeListTile extends StatelessWidget {
         style: Theme.of(context).textTheme.titleMedium,
       ));
     }
-    recipe.resourceInputs.forEach((resource, quantity) => inputs.add(Text(
+    recipe.resourceInputs.forEach((resource, quantity) {
+      if (resource is Fluid) {
+        inputs.add(Text(
+          '$quantity mB ${resource.name}',
+          style: Theme.of(context).textTheme.titleMedium,
+        ));
+      } else {
+        inputs.add(Text(
           '$quantity ${resource.name}',
           style: Theme.of(context).textTheme.titleMedium,
-        )));
+        ));
+      }
+    });
     for (var tool in recipe.tools) {
       process.add(Text(
         tool.name,

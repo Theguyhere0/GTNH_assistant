@@ -27,7 +27,7 @@ class Recipe {
   /// The [Item]s and their amounts that result from this [Recipe]. Values less between 1 and 0 represent probabilistic results.
   final Map<Item, double> itemOutputs;
 
-  /// The [Fluid]s and their quantity in Liters that result from this [Recipe].
+  /// The [Fluid]s and their quantity in mB that result from this [Recipe].
   final Map<Fluid, int> fluidOutputs;
 
   /// The energy that results from this [Recipe] in EU.
@@ -54,5 +54,48 @@ List<Recipe> recipes = [
   Recipe(
     resourceInputs: {Item.gravel: 3},
     itemOutputs: {Item.flint: 1},
+  ),
+  Recipe(
+    resourceInputs: {
+      Item.cobblestone: 6,
+      Item.flint: 3,
+    },
+    itemOutputs: {Item.furnace: 1},
+  ),
+  Recipe(
+    resourceInputs: {
+      Item.cobblestone: 32,
+      Fluid.creosote: 1000,
+    },
+    machines: [Machine.furnace],
+    time: 320,
+    itemOutputs: {Item.stone: 32},
+  ),
+  Recipe(
+    resourceInputs: {Item.clay: 1},
+    tools: [Tool.mortar],
+    itemOutputs: {Item.smallPileOfClayDust: 1},
+  ),
+  Recipe(
+    resourceInputs: {Item.smallPileOfClayDust: 4},
+    itemOutputs: {Item.clayDust: 1},
+  ),
+  Recipe(
+    resourceInputs: {Item.gravel: 1},
+    tools: [Tool.mortar],
+    itemOutputs: {Item.flint: 1},
+  ),
+  Recipe(
+    resourceInputs: {
+      Item.clay: 3,
+      Item.sand: 5,
+    },
+    tools: [Tool.brickForm],
+    itemOutputs: {Item.unfiredCokeOvenBrick: 3},
+  ),
+  Recipe(
+    resourceInputs: {Item.clay: 8},
+    tools: [Tool.brickForm],
+    itemOutputs: {Item.unfiredClayBrick: 8},
   ),
 ];

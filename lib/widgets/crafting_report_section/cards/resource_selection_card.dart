@@ -40,7 +40,7 @@ class ResourceSelectionCard extends ConsumerWidget {
     return SmallCard(
       'Resource Selection',
       infoContent:
-          'Select a resource for the Crafting Report to attempt generating a crafting report and Bill of Materials (BOM) for.',
+          'Select a resource for the Crafting Report to attempt generating the Crafting Steps and Bill of Materials for.',
       content: Padding(
         padding: const EdgeInsets.symmetric(horizontal: defaultPadding),
         child: SectionedListCardTile(
