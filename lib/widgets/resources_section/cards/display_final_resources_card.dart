@@ -19,25 +19,24 @@ class DisplayFinalResourcesCard extends ConsumerWidget {
     void delete(name) {
       ref
           .read(assistantControllerProvider.notifier)
-          .removeFinalResourceByName(name);
+          .removeFinalFluidByName(name);
+      ref
+          .read(assistantControllerProvider.notifier)
+          .removeFinalItemByName(name);
     }
 
     Map<String, List<String>> values = {};
-    List<String> staging = fluids
-        .where((item) => ref
-            .watch(assistantControllerProvider)
-            .finalResources
-            .contains(item))
+    List<String> staging = Fluid.values
+        .where((item) =>
+            ref.watch(assistantControllerProvider).finalFluids.contains(item))
         .map((e) => e.name)
         .toList();
     if (staging.isNotEmpty) {
       values['Fluids'] = staging;
     }
-    List<Item> reduced = items
-        .where((item) => ref
-            .watch(assistantControllerProvider)
-            .finalResources
-            .contains(item))
+    List<Item> reduced = Item.values
+        .where((item) =>
+            ref.watch(assistantControllerProvider).finalItems.contains(item))
         .toList();
     for (var type in ItemType.values) {
       List<String> staging = reduced
@@ -45,7 +44,7 @@ class DisplayFinalResourcesCard extends ConsumerWidget {
           .map((e) => e.name)
           .toList();
       if (staging.isNotEmpty) {
-        values[type.value] = reduced
+        values[type.name] = reduced
             .where((item) => item.type == type)
             .map((e) => e.name)
             .toList();

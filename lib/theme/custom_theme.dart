@@ -8,7 +8,6 @@ class CustomTheme {
   static ThemeData modernTheme() {
     return ThemeData.dark().copyWith(
       scaffoldBackgroundColor: Palette.background,
-      backgroundColor: Palette.background,
       cardColor: Palette.card,
       hoverColor: Colors.transparent,
       focusColor: Palette.focus,
@@ -17,14 +16,18 @@ class CustomTheme {
       disabledColor: Palette.suppressed,
       canvasColor: Palette.card,
       hintColor: Palette.suppressed,
-      errorColor: Palette.failure,
+      visualDensity:
+          const VisualDensity(vertical: VisualDensity.minimumDensity),
       dialogTheme: DialogTheme(
         backgroundColor: Palette.card,
         shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(cardCornerRadius)),
       ),
       colorScheme: const ColorScheme.dark(
+        background: Palette.background,
+        error: Palette.failure,
         primary: Palette.highlight,
+        secondary: Palette.standard,
         surface: Palette.card,
       ),
       timePickerTheme: TimePickerThemeData(
@@ -56,7 +59,6 @@ class CustomTheme {
           return Colors.transparent;
         }),
       ),
-      toggleableActiveColor: Palette.standard,
       tooltipTheme: const TooltipThemeData(
         waitDuration: Duration(milliseconds: 350),
         decoration: BoxDecoration(

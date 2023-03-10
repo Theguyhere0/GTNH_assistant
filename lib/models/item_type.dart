@@ -27,7 +27,7 @@ enum ItemType {
   maxMachine('MAX Machine');
 
   /// The display name.
-  final String value;
+  final String name;
 
-  const ItemType(this.value);
+  const ItemType(this.name);
 }

@@ -10,7 +10,7 @@ enum IndustrialAge {
   luv('LuV Age');
 
   /// The display name.
-  final String value;
+  final String name;
 
-  const IndustrialAge(this.value);
+  const IndustrialAge(this.name);
 }

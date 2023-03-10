@@ -5,20 +5,16 @@ import '../../../models/assistant_controller.dart';
 import '../../../models/item.dart';
 import '../../../models/item_type.dart';
 import '../../../utils/constants.dart';
-import '../../common/card_tiles/sectioned_list_card_tile.dart';
+import '../../common/card_tiles/recipe_list_card_tile.dart';
 import '../../common/cards/small_card.dart';
 
-class SelectFinalItemsCard extends ConsumerWidget {
-  const SelectFinalItemsCard({
+class CraftingStepsCard extends ConsumerWidget {
+  const CraftingStepsCard({
     Key? key,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    void add(name) {
-      ref.read(assistantControllerProvider.notifier).addFinalItemByName(name);
-    }
-
     Map<String, List<String>> values = {};
     List<Item> reduced = Item.values
         .where((item) =>
@@ -38,15 +34,13 @@ class SelectFinalItemsCard extends ConsumerWidget {
     }
 
     return SmallCard(
-      'Select Final Items',
+      'Crafting Steps',
       infoContent:
-          'Select the items that the Crafting Report will treat as final and will not try to find the recipes for to create the crafting tree.',
+          'The Crafting Report will display all the crafting steps used to create the resource selected. Order is not necessarily the optimal crafting order.',
       content: Padding(
         padding: const EdgeInsets.symmetric(horizontal: defaultPadding),
-        child: SectionedListCardTile(
-          values: values,
-          add: add,
-        ),
+        child: RecipeListCardTile(
+            ref.watch(assistantControllerProvider).craftingSteps),
       ),
     );
   }

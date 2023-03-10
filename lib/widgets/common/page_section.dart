@@ -39,7 +39,7 @@ class _PageSection extends State<PageSection> {
           children: <Widget>[
             // The icon of the section
             Padding(
-              padding: const EdgeInsets.only(right: defaultPadding),
+              padding: const EdgeInsets.only(right: defaultPadding * 2),
               child: Icon(
                 widget.icon,
                 color: _sectionExpanded ? Palette.highlight : Palette.standard,
@@ -84,7 +84,7 @@ class _PageSection extends State<PageSection> {
           left: defaultPadding * 2,
           right: defaultPadding * 3,
         ),
-        children: widget.content,
+        children: [Container(height: defaultPadding), ...widget.content],
       ),
     );
   }

@@ -31,7 +31,7 @@ class SelectAvailableToolsCard extends ConsumerWidget {
                   .watch(assistantControllerProvider)
                   .availableTools
                   .contains(tool)))
-              .map((e) => e.value)
+              .map((e) => e.name)
               .toList(),
           add: add,
         ),

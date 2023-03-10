@@ -12,6 +12,7 @@ class SectionedListCardTile extends StatelessWidget {
     required this.values,
     this.delete,
     this.add,
+    this.select,
   }) : super(key: key);
 
   /// A possible descriptor for the list.
@@ -27,6 +28,9 @@ class SectionedListCardTile extends StatelessWidget {
 
   /// The function to call to add an instance.
   final void Function(String)? add;
+
+  /// The function to call to select an instance.
+  final void Function(String)? select;
 
   @override
   Widget build(BuildContext context) {
@@ -54,6 +58,7 @@ class SectionedListCardTile extends StatelessWidget {
                               values: values[e] ?? [],
                               delete: delete,
                               add: add,
+                              select: select,
                             ))
                         .toList()),
               ),
@@ -99,6 +104,7 @@ class SectionedListCardTile extends StatelessWidget {
                                     values: values[e] ?? [],
                                     delete: delete,
                                     add: add,
+                                    select: select,
                                   ))
                               .toList()),
                     ),

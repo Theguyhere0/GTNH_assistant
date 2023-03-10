@@ -12,6 +12,7 @@ class InstanceListTile extends StatelessWidget {
     Key? key,
     this.delete,
     this.add,
+    this.select,
   }) : super(key: key);
 
   /// The name of the element.
@@ -22,6 +23,9 @@ class InstanceListTile extends StatelessWidget {
 
   /// The function to call to add this instance.
   final void Function(String)? add;
+
+  /// The function to call to select this instance.
+  final void Function(String)? select;
 
   @override
   Widget build(BuildContext context) {
@@ -39,9 +43,13 @@ class InstanceListTile extends StatelessWidget {
       children.add(AddButton(() => add!(name)));
     }
 
-    return Row(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: children,
+    return ListTile(
+      title: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: children,
+      ),
+      hoverColor: select == null ? Palette.card : Palette.focus,
+      onTap: select == null ? null : () => select!(name),
     );
   }
 }

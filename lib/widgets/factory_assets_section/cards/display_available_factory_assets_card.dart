@@ -31,12 +31,12 @@ class DisplayAvailableFactoryAssetsCard extends ConsumerWidget {
             .watch(assistantControllerProvider)
             .availableTools
             .contains(tool))
-        .map((e) => e.value)
+        .map((e) => e.name)
         .toList();
     if (staging.isNotEmpty) {
       values['Tools'] = staging;
     }
-    List<Machine> reduced = machines
+    List<Machine> reduced = Machine.values
         .where((machine) => ref
             .watch(assistantControllerProvider)
             .availableMachines
@@ -48,7 +48,7 @@ class DisplayAvailableFactoryAssetsCard extends ConsumerWidget {
           .map((e) => e.name)
           .toList();
       if (staging.isNotEmpty) {
-        values[type.value] = reduced
+        values[type.name] = reduced
             .where((machine) => machine.type == type)
             .map((e) => e.name)
             .toList();

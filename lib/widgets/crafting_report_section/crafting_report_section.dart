@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 
 import '../common/page_section.dart';
+import 'cards/bill_of_materials_card.dart';
+import 'cards/crafting_steps_card.dart';
+import 'cards/resource_selection_card.dart';
 
 /// The section for generating a report of crafting recipes and materials.
 class CraftingReportSection extends StatelessWidget {
@@ -15,7 +18,9 @@ class CraftingReportSection extends StatelessWidget {
         Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: const <Widget>[
-            Spacer(),
+            ResourceSelectionCard(),
+            CraftingStepsCard(),
+            BillOfMaterialsCard(),
           ],
         ),
       ],

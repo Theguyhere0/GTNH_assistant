@@ -25,10 +25,10 @@ class SelectFinalFluidsCard extends ConsumerWidget {
       content: Padding(
         padding: const EdgeInsets.symmetric(horizontal: defaultPadding),
         child: ListCardTile(
-          values: fluids
+          values: Fluid.values
               .where((fluid) => !(ref
                   .watch(assistantControllerProvider)
-                  .finalResources
+                  .finalFluids
                   .contains(fluid)))
               .map((e) => e.name)
               .toList(),

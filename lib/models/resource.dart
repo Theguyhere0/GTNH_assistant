@@ -1,8 +1,7 @@
-/// A class that represents an input to a crafting process that is consumed.
-abstract class Resource {
-  /// The name of this [Resource].
-  String get name;
+import 'fluid.dart';
+import 'item.dart';
 
-  /// The quantity of this [Resource] needed in the crafting recipe.
-  int get amount;
+/// A class to represent the combination of [Fluid]s and [Item]s.
+abstract class Resource {
+  String get name;
 }

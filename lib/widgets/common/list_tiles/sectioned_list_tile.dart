@@ -13,6 +13,7 @@ class SectionedListTile extends StatefulWidget {
     required this.values,
     this.delete,
     this.add,
+    this.select,
   }) : super(key: key);
 
   /// The name of the section.
@@ -26,6 +27,9 @@ class SectionedListTile extends StatefulWidget {
 
   /// The function to call to add this instance.
   final void Function(String)? add;
+
+  /// The function to call to select this instance.
+  final void Function(String)? select;
 
   @override
   State<SectionedListTile> createState() => _SectionedListTile();
@@ -80,6 +84,7 @@ class _SectionedListTile extends State<SectionedListTile> {
                 e,
                 delete: widget.delete,
                 add: widget.add,
+                select: widget.select,
               ))
           .toList(),
     );

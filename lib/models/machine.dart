@@ -1,17 +1,14 @@
 import 'industrial_age.dart';
 
-/// A class that represents a setup a process step, not to be confused with the blocks or items that allow for the process.
-class Machine {
+/// An enumeration that represents a setup a process step, not to be confused with the blocks or items that allow for the process.
+enum Machine {
+  cokeOven(name: 'Coke Oven', type: IndustrialAge.steam);
+
   /// The name of this [Machine].
-  String name;
+  final String name;
 
   /// The [IndustrialAge] that this [Machine] falls under.
-  IndustrialAge type;
+  final IndustrialAge type;
 
-  Machine({required this.name, required this.type});
+  const Machine({required this.name, required this.type});
 }
-
-/// A master list of [Machine]s.
-final List<Machine> machines = [
-  Machine(name: 'Coke Oven', type: IndustrialAge.steam),
-];

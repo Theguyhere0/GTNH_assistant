@@ -6,7 +6,7 @@ enum Tool {
   wrench('Wrench');
 
   /// The display name.
-  final String value;
+  final String name;
 
-  const Tool(this.value);
+  const Tool(this.name);
 }
